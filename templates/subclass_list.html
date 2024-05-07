@@ -1,0 +1,25 @@
+{% extends 'default.html' %}
+
+{% block title %}Subclass{% endblock title %}
+
+{% block content %}
+    <br><br>
+    {% if bills %}
+        {% for bill in bills %}
+            <a href="/subclass/{{ subclass.id }}" style="font-size: 20px;"><b>{{ subclass.title }}</b></a><br>
+            <span style="font-size: 12px;"><b>Автор:  {{ subclass.author }} |
+                Дата публикации: {{ subclass.subclass_time|date:'d.M.Y' }} г.</b></span><br><br>
+
+
+
+        {% endfor %}
+    {% else %}
+        <br><br>
+        <h2>Публикаций нет!</h2>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <br><br><br>
+        <a class="btn btn-secondary" href="{% url 'subclass_create' %}" role="button">Добавить новое объявление</a>
+    {% endif %}
+{% endblock content %}
