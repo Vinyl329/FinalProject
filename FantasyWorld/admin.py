@@ -15,6 +15,7 @@ class SubclassAdminForm(forms.ModelForm):
 class SubclassAdmin(admin.ModelAdmin):
     form = SubclassAdminForm
 
+
 admin.site.register(Subclass, SubclassAdmin)
 admin.site.register(Response)
 admin.site.register(Category)
