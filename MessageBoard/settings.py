@@ -83,7 +83,7 @@ REST_FRAMEWORK = {
 
 }
 
-AUTH_USER_MODEL = 'FantasyWorld.User'
+AUTH_USER_MODEL = 'FantasyWorld.Gamer'
 
 TEMPLATES = [
     {
@@ -156,7 +156,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'FantasyWorld.Gamer'
 
 EMAIL_HOST = 'pop.gmail.com'
 EMAIL_PORT = 25
@@ -167,7 +166,6 @@ DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 

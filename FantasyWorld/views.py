@@ -15,7 +15,7 @@ from .filters import SubclassFilter
 
 class SubclassList(ListView):
     model = Subclass
-    template_name = 'subclasslist.html'
+    template_name = 'subclass_list.html'
     context_object_name = 'subclass'
     ordering = '-subclass_time'
 
@@ -105,10 +105,7 @@ class ResponseList(ListView):
         return self.filterset.qs
 
 
-    # def get_queryset(self):
-    #     queryset = Comment.objects.filter(comment_bill__author=self.request.user).order_by('-date_in')
-    #     self.filterset = BillFilter(self.request.GET, queryset, request=self.request.user)
-    #     return self.filterset.qs
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -116,23 +113,6 @@ class ResponseList(ListView):
         return context
 
 
-# class CommentCreate(LoginRequiredMixin, CreateView):
-#     form_class = CommentForm
-#     model = Comment
-#     template_name = 'respond.html'
-#
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['bill_detail'] = Bill.objects.get(pk=self.kwargs['pk']).title
-#         return context
-#
-#     def form_valid(self, form):
-#         comment = form.save(commit=False)
-#         comment.author = self.request.user
-#         comment.comment_bill = Bill.objects.get(id=self.kwargs['pk'])
-#         return super().form_valid(form)
-#
 
 class ResponseDelete(LoginRequiredMixin, DeleteView):
     model = Response
@@ -193,12 +173,6 @@ class ConfirmUser(UpdateView):
         return redirect('account_login')
 
 
-# @login_required
-# def accept_comment(request, pk):
-#     comment = Comment.objects.get(id=pk)
-#     comment.accepted = True
-#     comment.save()
-#     return HttpResponseRedirect(reverse('mycomments'))
 
 @login_required
 def accept_response(request, **kwargs):
